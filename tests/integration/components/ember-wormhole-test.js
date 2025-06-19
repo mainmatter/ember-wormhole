@@ -48,6 +48,7 @@ module('Integration | Component | ember wormhole', function(hooks) {
     this.set('renderInPlace', false);
     await settled();
 
+    content = document.querySelector('#wormhole-content');
     assert.equal(content.parentElement.id, 'wormhole-destination-element');
   });
 
@@ -69,6 +70,7 @@ module('Integration | Component | ember wormhole', function(hooks) {
 
     await settled();
 
+    content = document.querySelector('#wormhole-content');
     assert.equal(content.parentElement.id, 'wormhole-destination-element');
 
     // switch back
@@ -76,6 +78,7 @@ module('Integration | Component | ember wormhole', function(hooks) {
 
     await settled();
 
+    content = document.querySelector('#wormhole-content');
     assert.notEqual(content.parentElement.id, 'wormhole-destination-element');
   });
 });

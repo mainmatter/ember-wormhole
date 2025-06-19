@@ -9,13 +9,13 @@ export default Wormhole.extend({
     this._super();
 
     if (titles.length === 0) {
-      this._dom.title = '';
+      document.title = '';
     }
     titles.push(this);
   },
 
   destinationElement: computed(function () {
-    let head = this._dom.head;
+    let head = document.head;
     let node = head.firstChild;
     while (node !== null) {
       if (node.nodeType === 1 && node.tagName === 'TITLE') {
@@ -23,7 +23,7 @@ export default Wormhole.extend({
       }
       node = node.nextSibling;
     }
-    node = this._dom.createElement('title');
+    node = document.createElement('title');
     head.appendChild(node);
     return node;
   }),
