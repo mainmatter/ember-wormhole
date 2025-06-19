@@ -1,7 +1,7 @@
 /* eslint-disable ember/classic-decorator-no-classic-methods, ember/no-classic-components, ember/require-tagless-components */
 import Component from '@ember/component';
 
-import { findElementById, getDOM } from '../utils/dom';
+import { findElementById } from '../utils/dom';
 
 export default class EmberWormwholeComponent extends Component {
   get _destination() {
@@ -17,7 +17,7 @@ export default class EmberWormwholeComponent extends Component {
     let destinationElementId =
       this.get('destinationElementId') || this.get('to');
     if (destinationElementId) {
-      let result = findElementById(this._dom, destinationElementId);
+      let result = findElementById(document, destinationElementId);
 
       // fall through to the error handlers below if we didn't find the element
       if (result) {
@@ -33,11 +33,5 @@ export default class EmberWormwholeComponent extends Component {
     throw new Error(
       'ember-wormhole failed to render content because the destinationElementId was set to an undefined or falsy value.',
     );
-  }
-
-  constructor() {
-    super(...arguments);
-
-    this._dom = getDOM(this);
   }
 }
